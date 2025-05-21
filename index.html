@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Manos de Pintura</title>
+    <style>
+        body {
+            background-image: url('./img/moniteurs-bleus-.jpg');
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            color: wheat;
+            text-align: center;
+            padding: 20px;
+        }
+    </style> 
+   
+</head>
+<body>
+
+<h1>&#9733; Calculadora de Litros de Pintura&#9733; </h1>
+<form id="formulario">
+    <label for="alto">Alto de la pared (m):</label>
+    <input type="number" id="alto" required>
+
+    <label for="ancho">Ancho de la pared (m):</label>
+    <input type="number" id="ancho" required>
+
+    <label for="manos">Número de manos a aplicar:</label>
+    <input type="number" id="manos" required>
+<br>
+    <button type="button" onclick="CalcularLitros()">Calcular</button>
+</form>
+
+<p id="respuesta"></p>
+
+<script>
+    const COBERTURA = 12; // Cobertura en m2 por litro
+
+    function CalcularLitros() {
+        const alto = parseFloat(document.getElementById('alto').value);
+        const ancho = parseFloat(document.getElementById('ancho').value);
+        const manos = parseInt(document.getElementById('manos').value);
+
+        // Calcular el área total de la pared
+        const area = alto * ancho;
+
+        // Calcular los litros necesarios
+        const litrosNecesarios = (area * manos) / COBERTURA;
+
+        // Mostrar el resultado
+        document.getElementById('respuesta').innerText = `Litros de pintura necesarios: ${litrosNecesarios.toFixed(2)} litros.`;
+    }
+</script>
+
+</body>
+</html>
